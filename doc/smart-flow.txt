@@ -28,6 +28,10 @@ Default values:
   SmartFlow.options = {
       -- Prints useful logs about what event are triggered, and reasons actions are executed.
       debug = false,
+      -- Automatically save when leaving insert mode
+      autosave = false,
+      -- Debounce time in milliseconds for autosave
+      debounce_time = 5000,
   }
 
 <

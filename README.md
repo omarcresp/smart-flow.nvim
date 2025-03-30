@@ -25,6 +25,8 @@ _[GIF version of the showcase video for mobile users](SHOWCASE_GIF_LINK)_
 - FEATURE 1
 - FEATURE ..
 - FEATURE N
+- Autosave when leaving insert mode - automatically saves your buffer when exiting insert mode with 5-second debounce
+- Autosave after undo/redo operations - ensures your changes are saved after undoing or redoing work
 
 ## 📋 Installation
 
@@ -88,6 +90,64 @@ require("lazy").setup({"smart-flow.nvim"})
 
 </td>
 </tr>
+<tr>
+<td>
+
+[NixOS/Nix](https://nixos.org/)
+
+</td>
+<td>
+
+```nix
+# In your flake.nix
+{
+  inputs = {
+    # ...
+    smart-flow-nvim.url = "github:omarcresp/smart-flow.nvim";
+  };
+
+  outputs = { self, nixpkgs, smart-flow-nvim, ... }: {
+    # For NixOS configuration
+    nixosConfigurations.yourhostname = nixpkgs.lib.nixosSystem {
+      # ...
+      modules = [
+        # ...
+        ({ pkgs, ... }: {
+          nixpkgs.overlays = [ smart-flow-nvim.overlay ];
+          programs.neovim = {
+            enable = true;
+            plugins = with pkgs.vimPlugins; [
+              # ...
+              smart-flow-nvim
+            ];
+          };
+        })
+      ];
+    };
+
+    # Or for home-manager
+    homeConfigurations.yourusername = home-manager.lib.homeManagerConfiguration {
+      # ...
+      modules = [
+        # ...
+        ({ pkgs, ... }: {
+          nixpkgs.overlays = [ smart-flow-nvim.overlay ];
+          programs.neovim = {
+            enable = true;
+            plugins = with pkgs.vimPlugins; [
+              # ...
+              smart-flow-nvim
+            ];
+          };
+        })
+      ];
+    };
+  };
+}
+```
+
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -107,7 +167,12 @@ require("lazy").setup({"smart-flow.nvim"})
 
 ```lua
 require("smart-flow").setup({
-    -- you can copy the full list from lua/smart-flow/config.lua
+    -- Prints useful logs about what event are triggered, and reasons actions are executed.
+    debug = false,
+    -- Automatically save when leaving insert mode
+    autosave = false,
+    -- Debounce time in milliseconds for autosave (default: 5 seconds)
+    debounce_time = 5000,
 })
 ```
 
@@ -115,13 +180,21 @@ require("smart-flow").setup({
 
 ## 🧰 Commands
 
-|   Command   |         Description        |
-|-------------|----------------------------|
-|  `:Toggle`  |     Enables the plugin.    |
+|   Command      |         Description        |
+|----------------|----------------------------|
+|  `:SmartFlow`  |     Enables the plugin.    |
 
 ## ⌨ Contributing
 
 PRs and issues are always welcome. Make sure to provide as much context as possible when opening one.
+
+### Development with Nix
+
+If you have Nix installed with flakes enabled, you can use the following commands:
+
+- `nix develop` - Enter a development shell with all required dependencies
+- `nix run .#format` - Format all Lua files in the project using stylua
+- `nix run` - Launch Neovim with the smart-flow plugin preinstalled and enabled
 
 ## 🗞 Wiki
 
