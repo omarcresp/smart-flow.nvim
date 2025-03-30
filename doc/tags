@@ -1,5 +1,5 @@
-YourPluginName.disable()	neovim-plugin-boilerplate.txt	/*YourPluginName.disable()*
-YourPluginName.enable()	neovim-plugin-boilerplate.txt	/*YourPluginName.enable()*
-YourPluginName.options	neovim-plugin-boilerplate.txt	/*YourPluginName.options*
-YourPluginName.setup()	neovim-plugin-boilerplate.txt	/*YourPluginName.setup()*
-YourPluginName.toggle()	neovim-plugin-boilerplate.txt	/*YourPluginName.toggle()*
+SmartFlow.disable()	smart-flow.txt	/*SmartFlow.disable()*
+SmartFlow.enable()	smart-flow.txt	/*SmartFlow.enable()*
+SmartFlow.options	smart-flow.txt	/*SmartFlow.options*
+SmartFlow.setup()	smart-flow.txt	/*SmartFlow.setup()*
+SmartFlow.toggle()	smart-flow.txt	/*SmartFlow.toggle()*
