@@ -29,6 +29,12 @@ function config.evaluate(options)
     )
     state.debounce_time = options.debounce_time or state.debounce_time
 
+    assert(
+        options.autoadd == nil or type(options.autoadd) == "boolean",
+        "`autoadd` must be a boolean (`true` or `false`)."
+    )
+    state.autoadd = options.autoadd or state.autoadd
+
     log.debug("final state: " .. vim.inspect(state))
 end
 
