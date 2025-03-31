@@ -4,7 +4,7 @@ local state = {
     timer = nil,
     autosave = true,
     debounce_time = 3000,
-    autoadd = false,
+    autoadd = true,
 }
 
 return state

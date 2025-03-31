@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-    > A catch phrase that describes your plugin.
+    > Smart up your workflow
 </p>
 
 <div align="center">
