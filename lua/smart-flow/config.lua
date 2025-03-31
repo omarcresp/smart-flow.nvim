@@ -10,6 +10,7 @@ local config = {}
 ---@private
 function config.evaluate(options)
     log.debug("user options: " .. vim.inspect(options))
+
     assert(
         options.debug == nil or type(options.debug) == "boolean",
         "`debug` must be a boolean (`true` or `false`)."

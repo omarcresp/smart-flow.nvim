@@ -58,7 +58,6 @@ function main.enable()
 
     -- Set up autosave functionality if enabled in config
     if state.autosave then
-        print(vim.inspect(state))
         log.debug("Setting up autosave with debounce time: " .. state.debounce_time .. "ms")
 
         -- Create an autocommand group for our plugin
